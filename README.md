@@ -164,5 +164,9 @@ III) Выделить том под /home
 echo "`blkid | grep Home | awk '{print $2}'` \
  /home xfs defaults 0 0" >> /etc/fstab
 
+3. Проверяем
+
+`lsblk`
+
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm8.jpg)
 
