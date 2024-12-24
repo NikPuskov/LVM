@@ -161,8 +161,8 @@ III) Выделить том под /home
 
 2. Правим fstab для автоматического монтирования /home
 
-`echo "`blkid | grep Home | awk '{print $2}'` \
- /home xfs defaults 0 0" >> /etc/fstab`
+echo "`blkid | grep Home | awk '{print $2}'` \
+ /home xfs defaults 0 0" >> /etc/fstab
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm8.jpg)
 
