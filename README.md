@@ -27,3 +27,5 @@ I) Уменьшить том под / до 8G
 4. Проверим что скопировалось
 
 `ls /mnt`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm1.jpg)
