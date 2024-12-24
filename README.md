@@ -1,6 +1,8 @@
 # LVM
 
-Стенд поднят на Vagrant (Vagrantfile прилагается) 
+Стенд поднят на Vagrant (Vagrantfile прилагается)
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm.jpg)
 
 I) Уменьшить том под / до 8G
 
