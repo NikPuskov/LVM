@@ -170,3 +170,29 @@ echo "`blkid | grep Home | awk '{print $2}'` \
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm8.jpg)
 
+IV) Работа со снапшотами
+
+1. Генерируем файлы в /home/
+
+`touch /home/file{1..20}`
+
+2. Снимаем снапшот
+
+`lvcreate -L 100MB -s -n home_snap \
+ /dev/ubuntu-vg/LogVol_Home`
+
+ 3. Удаляем часть файлов
+
+`rm -f /home/file{11..20}`
+
+4. Восстанавливаем из снапшота
+
+`umount /home`
+
+`lvconvert --merge /dev/ubuntu-vg/home_snap`
+
+`mount /dev/mapper/ubuntu--vg-LogVol_Home /home`
+
+`ls -al /home`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm9.jpg)
