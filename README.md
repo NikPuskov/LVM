@@ -51,4 +51,6 @@ I) Уменьшить том под / до 8G
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm2.jpg)
 
+8. После перезагрузки
 
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm3.jpg)
