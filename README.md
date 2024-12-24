@@ -141,4 +141,28 @@ I) Уменьшить том под / до 8G
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm7.jpg)
 
+III) Выделить том под /home
+
+1. Выделяем том под /home по тому же принципу что делали для /var
+
+`lvcreate -n LogVol_Home -L 2G /dev/ubuntu-vg`
+
+`mkfs.ext4 /dev/ubuntu-vg/LogVol_Home`
+
+`mount /dev/ubuntu-vg/LogVol_Home /mnt/`
+
+`cp -aR /home/* /mnt/`
+
+`rm -rf /home/*`
+
+`umount /mnt`
+
+`mount /dev/ubuntu-vg/LogVol_Home /home/`
+
+2. Правим fstab для автоматического монтирования /home
+
+`echo "`blkid | grep Home | awk '{print $2}'` \
+ /home xfs defaults 0 0" >> /etc/fstab`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm8.jpg)
 
