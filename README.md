@@ -127,3 +127,18 @@ I) Уменьшить том под / до 8G
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm6.jpg)
 
+7. Удаляем временную Volume Group
+
+`lvremove /dev/vg_root/lv_root`
+
+`vgremove /dev/vg_root`
+
+`pvremove /dev/sdb`
+
+8. Проверяем
+
+`lsblk`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm7.jpg)
+
+
