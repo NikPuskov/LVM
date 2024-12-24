@@ -54,3 +54,20 @@ I) Уменьшить том под / до 8G
 8. После перезагрузки
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm3.jpg)
+
+9. Удаляем старый LV размером в 31G и создаём новый на 8G
+
+`lvremove /dev/ubuntu-vg/ubuntu-lv`
+
+`lvcreate -n ubuntu-vg/ubuntu-lv -L 8G /dev/ubuntu-vg`
+
+10. Делаем на новом разделе те же операции, что и в первый раз
+
+`mkfs.ext4 /dev/ubuntu-vg/ubuntu-lv`
+
+`mount /dev/ubuntu-vg/ubuntu-lv /mnt`
+
+`rsync -avxHAX --progress / /mnt/`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm4.jpg)
+
