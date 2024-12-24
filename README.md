@@ -29,3 +29,24 @@ I) Уменьшить том под / до 8G
 `ls /mnt`
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm1.jpg)
+
+5. Сконфигурируем grub для того, чтобы при старте перейти в новый /. Сымитируем текущий root, сделаем в него chroot и обновим grub
+
+`for i in /proc/ /sys/ /dev/ /run/ /boot/; \
+ do mount --bind $i /mnt/$i; done`
+
+`chroot /mnt/`
+
+`grub-mkconfig -o /boot/grub/grub.cfg`
+
+6. Обновим образ initrd
+
+`update-initramfs -u`
+
+7. Перезагрузимся
+
+`reboot`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm2.jpg)
+
+
