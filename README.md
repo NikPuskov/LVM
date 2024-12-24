@@ -71,3 +71,17 @@ I) Уменьшить том под / до 8G
 
 ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm4.jpg)
 
+11. Ещё раз cконфигурируем grub
+
+`for i in /proc/ /sys/ /dev/ /run/ /boot/; \
+ do mount --bind $i /mnt/$i; done`
+
+ `chroot /mnt/`
+
+ `grub-mkconfig -o /boot/grub/grub.cfg`
+
+ `update-initramfs -u`
+
+ ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm5.jpg)
+
+ 
