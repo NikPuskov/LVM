@@ -84,4 +84,46 @@ I) Уменьшить том под / до 8G
 
  ![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm5.jpg)
 
- 
+ Не перезагружаемся и не выходим из под chroot - перенесем /var
+
+ II) Выделить том под /var в зеркало
+
+ 1. На свободных дисках создаем зеркало
+
+`pvcreate /dev/sdc /dev/sdd`
+
+`vgcreate vg_var /dev/sdc /dev/sdd`
+
+`lvcreate -L 950M -m1 -n lv_var vg_var`
+
+2. Создаем на нем ФС и перемещаем туда /var
+
+`mkfs.ext4 /dev/vg_var/lv_var`
+
+`mount /dev/vg_var/lv_var /mnt`
+
+`cp -aR /var/* /mnt/`
+
+3. Сохраняем содержимое старого var
+
+`mkdir /tmp/oldvar && mv /var/* /tmp/oldvar`
+
+4. Монтируем новый var в каталог /var
+
+`umount /mnt`
+
+`mount /dev/vg_var/lv_var /var`
+
+5. Правим fstab для автоматического монтирования /var
+
+`echo "`blkid | grep var: | awk '{print $2}'` \
+ /var ext4 defaults 0 0" >> /etc/fstab`
+
+ 6. Выходим и перезагружаемся
+
+`exit`
+
+`reboot`
+
+![Image alt](https://github.com/NikPuskov/LVM/blob/main/lvm6.jpg)
+
